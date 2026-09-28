@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- TEMP-VERIFY: remove after screenshot session -->
+    <script>
+      (function () {
+        var orig = window.matchMedia.bind(window);
+        window.matchMedia = function (q) {
+          var m = orig(q);
+          if (String(q).indexOf("prefers-reduced-motion") !== -1) {
+            return {
+              matches: true, media: m.media, onchange: null,
+              addEventListener: function () {}, removeEventListener: function () {},
+              addListener: function () {}, removeListener: function () {},
+              dispatchEvent: function () { return false; },
+            };
+          }
+          return m;
+        };
+        window.requestAnimationFrame = function (cb) {
+          return setTimeout(function () { cb(performance.now()); }, 30);
+        };
+        window.cancelAnimationFrame = function (id) { clearTimeout(id); };
+      })();
+    </script>
+    <!-- /TEMP-VERIFY -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#059669" />
+    <meta
+      name="description"
+      content="EcomByte — শুধুমাত্র অল-ইন-ওয়ান ই‑কমার্স সলিউশন। বিকাশ ও নগদ পেমেন্ট, পাঠাও ও স্টেডফাস্ট ডেলিভারি, ফেসবুক শপ সিঙ্ক। ১০ মিনিটেই চালু করুন আপনার অনলাইন শপ "
+    />
+    <link rel="icon" type="image/webp" href="/images/logo.webp" />
+    <title>EcomByte — আপনার অনলাইন ব্যবসার স্মার্ট এবং সহজ সমাধান</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
