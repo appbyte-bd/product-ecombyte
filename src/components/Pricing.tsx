@@ -6,7 +6,9 @@ import { cn } from "../utils/cn";
 interface Plan {
   name: string;
   price: string | null;
-  app: string;
+  period?: string;
+  advanceBusinessReport: string;
+  setupFee: string;
   popular?: boolean;
   cta: string;
 }
@@ -19,27 +21,43 @@ interface Feature {
 const p = {
   title: "আপনার জন্য সঠিক প্ল্যান বেছে নিন",
   subtitle:
-    "তিনটির যেকোনো একটি প্যাকেজে পুরো এক বছরের জন্য সব ফিচার আনলক করুন। হোস্টিং, আপডেট ও সাপোর্ট সবই অন্তর্ভুক্ত।",
+    "আপনার প্রয়োজন অনুযায়ী প্যাকেজ বেছে নিন। হোস্টিং, আপডেট ও সাপোর্ট সবই অন্তর্ভুক্ত।",
   perYear: "/বছর",
   popular: "জনপ্রিয়",
   custom: "আলোচনার সাপেক্ষে",
-  app: "মোবাইল অ্যাপ",
+  advanceBusinessReport: "অ্যাডভান্স বিজনেস রিপোর্ট",
+  setupFee: "সেটআপ ফি",
   plans: [
-    { name: "প্যাকেজ ১", price: "১২,০০০", app: "নেই", cta: "যোগাযোগ করুন" },
+    {
+      name: "প্যাকেজ ১",
+      price: "১০,০০০",
+      advanceBusinessReport: "রয়েছে",
+      setupFee: "নেই",
+      cta: "যোগাযোগ করুন",
+      popular: true,
+    },
     {
       name: "প্যাকেজ ২",
-      price: "২০,০০০",
-      app: "রয়েছে",
-      popular: true,
+      price: "১০০০",
+      period: "/মাস",
+      advanceBusinessReport: "রয়েছে",
+      setupFee: "৳১,০০০",
       cta: "যোগাযোগ করুন",
     },
-    { name: "কাস্টম", price: null, app: "কাস্টমাইজেবল", cta: "যোগাযোগ করুন" },
+
+    {
+      name: "প্যাকেজ ৩",
+      price: "৭০০০",
+      advanceBusinessReport: "নেই",
+      setupFee: "নেই",
+      cta: "যোগাযোগ করুন",
+    },
   ] as Plan[],
   highlights: [
     { label: "এমপ্লয়ী ম্যানেজমেন্ট", value: "আনলিমিটেড" },
     { label: "অর্ডার প্রসেস", value: "আনলিমিটেড" },
     { label: "এক্সট্রা অর্ডার চার্জ", value: "নেই" },
-    { label: "মাসিক চার্জ", value: "নেই" },
+    { label: "অতিরিক্ত মাসিক চার্জ", value: "নেই" },
   ],
   features: [
     {
@@ -73,7 +91,7 @@ const p = {
     },
     {
       text: "FB & Tik Tok Conversion API সেটআপ ফ্রি",
-      plans: [false, true, true],
+      plans: [true, true, false],
     },
     {
       text: "SEO Sitemap Google Indexing (গুগল র‍্যাংকিং)",
@@ -81,7 +99,7 @@ const p = {
     },
     {
       text: "রিয়েল-টাইম FB Catalog আপডেট ও Feed লিংক",
-      plans: [false, true, true],
+      plans: [true, true, false],
     },
     {
       text: "ল্যান্ডিং পেজের জন্য রেডিমেড টেমপ্লেট সুবিধা।",
@@ -97,12 +115,12 @@ const p = {
     },
     {
       text: "যেকোনো মোবাইল নাম্বারে সিঙ্গেল বা বাল্ক SMS সেন্ড।",
-      plans: [false, true, true],
+      plans: [true, true, false],
     },
-    { text: "নিরাপদ OTP এবং SMS রিটার্গেটিং।", plans: [false, true, true] },
+    { text: "নিরাপদ OTP এবং SMS রিটার্গেটিং।", plans: [true, true, false] },
     {
       text: "OTP ভেরিফিকেশনের মাধ্যমে ১০০% রিয়েল কাস্টমার যাচাই।",
-      plans: [false, true, true],
+      plans: [true, true, false],
     },
     {
       text: "স্প্যামিং ও বট হিট ঠেকাতে স্মার্ট IP ব্লকিং সিস্টেম।",
@@ -110,7 +128,7 @@ const p = {
     },
     {
       text: "বারবার ফেইক অর্ডার আটকাতে কাস্টম অর্ডার গ্যাপ ডিউরেশন।",
-      plans: [false, true, true],
+      plans: [true, true, false],
     },
     {
       text: "Gross Sales ও Net Profit এর অটো রিপোর্ট।",
@@ -146,7 +164,7 @@ const p = {
   ] as Feature[],
   tableTitle: "সব প্যাকেজের ফিচার তুলনা",
   footnote:
-    "প্রতিটি প্যাকেজের মূল্য পুরো এক বছরের জন্য — কোনো মাসিক ফি নেই। মূল্যে ভ্যাট অন্তর্ভুক্ত।",
+    "প্যাকেজ ২-এর মূল্য মাসিক; প্যাকেজ ১ ও প্যাকেজ ৩-এর মূল্য পুরো এক বছরের জন্য। মূল্যে ভ্যাট অন্তর্ভুক্ত।",
 };
 
 /* Package card: one column per plan, stacked on mobile and side by side on desktop. */
@@ -187,7 +205,9 @@ function PlanCard({ plan, children }: { plan: Plan; children?: ReactNode }) {
           <span className="text-3xl font-bold tracking-tight text-ink-900 tabular-nums">
             {plan.price}
           </span>
-          <span className="text-sm font-medium text-ink-500">{p.perYear}</span>
+          <span className="text-sm font-medium text-ink-500">
+            {plan.period ?? p.perYear}
+          </span>
         </span>
       ) : (
         <span className="mt-2 text-xl font-bold tracking-tight text-ink-900">
@@ -213,8 +233,14 @@ function PlanCard({ plan, children }: { plan: Plan; children?: ReactNode }) {
           </div>
         ))}
         <div className="flex items-center justify-between gap-2 text-sm">
-          <dt className="text-ink-500">{p.app}</dt>
-          <dd className="font-semibold text-ink-900">{plan.app}</dd>
+          <dt className="text-ink-500">{p.advanceBusinessReport}</dt>
+          <dd className="font-semibold text-ink-900">
+            {plan.advanceBusinessReport}
+          </dd>
+        </div>
+        <div className="flex items-center justify-between gap-2 text-sm">
+          <dt className="text-ink-500">{p.setupFee}</dt>
+          <dd className="font-semibold text-ink-900">{plan.setupFee}</dd>
         </div>
       </dl>
 

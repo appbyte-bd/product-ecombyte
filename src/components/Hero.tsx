@@ -159,11 +159,11 @@ export function Hero() {
             ecomByte প্ল্যাটফর্মে। আপনি ফোকাস করুন ব্যবসায়, আর বাকি সবকিছুর
             খেয়াল রাখবে ecomByte
           </p>
-          <div className="mt-8 flex flex-wrap gap-3.5">
+          <div className="mt-8 flex flex-nowrap gap-2 sm:flex-wrap sm:gap-3.5">
             <ButtonLink
               href="https://wa.me/8801891614300"
               size="lg"
-              className="hero-primary btn-shine bg-[#00694d] text-white shadow-[0_12px_26px_-12px_#00694d] hover:bg-[#0b8a66]"
+              className="hero-primary btn-shine basis-0 flex-1 px-2 text-[11px] gap-1.5 bg-[#00694d] text-white shadow-[0_12px_26px_-12px_#00694d] hover:bg-[#0b8a66] sm:basis-auto sm:flex-none sm:gap-2.5 sm:px-7 sm:text-base"
             >
               ফ্রি ট্রায়াল শুরু করুন
             </ButtonLink>
@@ -174,7 +174,7 @@ export function Hero() {
               onClick={(event) => openDemoVideo(event.currentTarget)}
               aria-haspopup="dialog"
               aria-expanded={videoOpen}
-              className="border-ink-300/70 bg-white/60 text-ink-900 backdrop-blur dark:border-white/20 dark:bg-white/10 dark:text-white"
+              className="basis-0 flex-1 gap-1.5 px-2 text-[11px] border-ink-300/70 bg-white/60 text-ink-900 backdrop-blur dark:border-white/20 dark:bg-white/10 dark:text-white sm:basis-auto sm:flex-none sm:gap-2.5 sm:px-7 sm:text-base"
             >
               <Play className="h-4 w-4 fill-current" aria-hidden="true" />
               ফিচারস গুলো দেখুন

@@ -15,7 +15,6 @@ import { Navbar } from "./components/Navbar";
 export default function App() {
   return (
     <div
-      id="top"
       className="relative min-h-screen overflow-x-clip bg-white transition-colors duration-300 dark:bg-ink-950"
     >
       <Navbar />

@@ -33,7 +33,7 @@ export function Navbar() {
   const videoOpen = useDemoVideoOpen();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [active, setActive] = useState("");
+  const [active, setActive] = useState("#top");
   const [dark, setDark] = useState(() =>
     document.documentElement.classList.contains("dark"),
   );
